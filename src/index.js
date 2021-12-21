@@ -1,17 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router} from 'react-router-dom'
-import TopBar from './node_modules/pages/components/topBar'
+
 import Routes from 'routes'
+import Topbar from 'components/topbar'
+import {CurrentUserProvider} from 'contexts/currentUser'
+import CurrentUserChecker from 'components/currentUserChecker'
 
 const App = () => {
   return (
-    <div className="App">
-      <Router>
-        <TopBar />
-        <Routes />
-      </Router>
-    </div>
+    <CurrentUserProvider>
+      <CurrentUserChecker>
+        <Router>
+          <Topbar />
+          <Routes />
+        </Router>
+      </CurrentUserChecker>
+    </CurrentUserProvider>
   )
 }
 
